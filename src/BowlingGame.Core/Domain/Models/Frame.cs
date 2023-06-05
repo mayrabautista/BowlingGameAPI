@@ -2,6 +2,8 @@
 {
     public class Frame
     {
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         public string FirstRoll { get; set; } = string.Empty;
 
         public string SecondRoll { get; set; } = string.Empty;

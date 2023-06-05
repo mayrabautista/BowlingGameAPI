@@ -2,8 +2,10 @@
 
 namespace BowlingGame.Core.Domain.Models
 {
-    internal class Game
+    public class Game
     {
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         public List<Frame> Frames { get; set; } = new List<Frame>();
 
         public int TotalScore { get; set; }

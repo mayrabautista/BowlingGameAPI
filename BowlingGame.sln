@@ -11,7 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{08504631-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core", "src\BowlingGame.Core\BowlingGame.Core.csproj", "{F1A873CA-A099-4F4F-895A-7770571B92FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Core.Services.Tests", "test\BowlingGame.Core.Services.Tests\BowlingGame.Core.Services.Tests.csproj", "{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Services.Tests", "test\BowlingGame.Core.Services.Tests\BowlingGame.Core.Services.Tests.csproj", "{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.API.Tests", "test\BowlingGame.API.Tests\BowlingGame.API.Tests.csproj", "{20123CB5-8C34-4C0B-928A-E8CD260FFF27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1545CAA2-B726-4451-BF55-3C26EF16C309}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +38,10 @@ Global
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +50,7 @@ Global
 		{E623B866-B1F6-4A90-966B-F0EA8BABE3FE} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
 		{F1A873CA-A099-4F4F-895A-7770571B92FD} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA} = {08504631-C59B-4436-8895-D7011486AC2E}
+		{20123CB5-8C34-4C0B-928A-E8CD260FFF27} = {08504631-C59B-4436-8895-D7011486AC2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4839F34F-B98A-4A52-8646-1BB52C29D899}

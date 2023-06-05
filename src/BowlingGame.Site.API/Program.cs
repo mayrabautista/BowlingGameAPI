@@ -1,11 +1,24 @@
+using BowlingGame.Core.Domain.Definitions;
+using BowlingGame.Core.Domain.Models;
+using BowlingGame.Core.Services;
+using BowlingGame.Core.Services.Validators;
+using BowlingGame.Infraestructure.Mocks;
+using FluentValidation;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Services
+builder.Services.AddScoped<IGamesService, GamesService>();
+
+// Repositories
+builder.Services.AddScoped<IGamesRepository, GamesRepositoryMock>();
+
+// Validators
+builder.Services.AddScoped<IValidator<Game>, GameValidator>();
 
 var app = builder.Build();
 

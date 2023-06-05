@@ -13,12 +13,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core", "src\Bow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Services.Tests", "test\BowlingGame.Core.Services.Tests\BowlingGame.Core.Services.Tests.csproj", "{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.API.Tests", "test\BowlingGame.API.Tests\BowlingGame.API.Tests.csproj", "{20123CB5-8C34-4C0B-928A-E8CD260FFF27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.API.Tests", "test\BowlingGame.API.Tests\BowlingGame.API.Tests.csproj", "{20123CB5-8C34-4C0B-928A-E8CD260FFF27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1545CAA2-B726-4451-BF55-3C26EF16C309}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Validators.Tests", "test\BowlingGame.Core.Validators.Tests\BowlingGame.Core.Validators.Tests.csproj", "{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Infraestructure", "src\BowlingGame.Infraestructure\BowlingGame.Infraestructure.csproj", "{69D23586-F6C2-4331-8960-B3C82E9321D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,14 @@ Global
 		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20123CB5-8C34-4C0B-928A-E8CD260FFF27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +63,8 @@ Global
 		{F1A873CA-A099-4F4F-895A-7770571B92FD} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA} = {08504631-C59B-4436-8895-D7011486AC2E}
 		{20123CB5-8C34-4C0B-928A-E8CD260FFF27} = {08504631-C59B-4436-8895-D7011486AC2E}
+		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E} = {08504631-C59B-4436-8895-D7011486AC2E}
+		{69D23586-F6C2-4331-8960-B3C82E9321D6} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4839F34F-B98A-4A52-8646-1BB52C29D899}

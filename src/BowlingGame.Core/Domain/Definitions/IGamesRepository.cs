@@ -2,7 +2,7 @@
 
 namespace BowlingGame.Core.Domain.Definitions
 {
-    public interface IGameService
+    public interface IGamesRepository
     {
         Task<Game> CreateAsync(Game game);
     }

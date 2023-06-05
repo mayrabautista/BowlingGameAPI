@@ -5,12 +5,12 @@ using FluentValidation;
 
 namespace BowlingGame.Core.Services
 {
-    public class GameService : IGameService
+    public class GamesService : IGamesService
     {
-        private readonly IGameRepository _repository;
+        private readonly IGamesRepository _repository;
         private readonly IValidator<Game> _validator;
 
-        public GameService(IGameRepository repository, IValidator<Game> validator)
+        public GamesService(IGamesRepository repository, IValidator<Game> validator)
         {
             _repository = repository;
             _validator = validator;

@@ -1,8 +1,8 @@
-﻿using BowlingGame.API.Models;
-using BowlingGame.Core.Domain.Abstractions;
+﻿using BowlingGame.Core.Domain.Abstractions;
+using BowlingGame.Presentation.RestAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BowlingGame.API.Controllers
+namespace BowlingGame.Presentation.RestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

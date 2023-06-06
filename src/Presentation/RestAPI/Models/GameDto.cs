@@ -1,8 +1,8 @@
-﻿using BowlingGame.API.Interfaces;
-using BowlingGame.Core.Domain.Enums;
+﻿using BowlingGame.Core.Domain.Enums;
 using BowlingGame.Core.Domain.Models;
+using BowlingGame.Presentation.RestAPI.Interfaces;
 
-namespace BowlingGame.API.Models
+namespace BowlingGame.Presentation.RestAPI.Models
 {
     public class GameDto : IDto<Game>
     {

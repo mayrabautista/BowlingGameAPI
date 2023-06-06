@@ -1,4 +1,4 @@
-﻿namespace BowlingGame.API.Interfaces
+﻿namespace BowlingGame.Presentation.RestAPI.Interfaces
 {
     public interface IDto<TModel>
     {

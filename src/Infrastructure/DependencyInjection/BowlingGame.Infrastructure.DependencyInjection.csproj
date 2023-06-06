@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Aplication\BowlingGame.Core.Aplication.csproj" />
+    <ProjectReference Include="..\..\Presentation\RestAPI\BowlingGame.Presentation.RestAPI.csproj" />
     <ProjectReference Include="..\Mongo\BowlingGame.Infrastructure.Mongo.csproj" />
     <ProjectReference Include="..\MSSql\BowlingGame.Infrastructure.MSSql.csproj" />
   </ItemGroup>

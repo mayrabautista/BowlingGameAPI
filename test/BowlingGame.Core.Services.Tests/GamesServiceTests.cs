@@ -34,7 +34,6 @@ namespace BowlingGame.Core.Services.Tests
             Assert.That(result.Id, Is.EqualTo(game.Id));
         }
 
-
         [Test]
         public void CreateAsync_InvalidGame_ThrowsModelValidationException()
         {

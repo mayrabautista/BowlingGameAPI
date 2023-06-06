@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
     <ProjectReference Include="..\BowlingGame.Infraestructure\BowlingGame.Infraestructure.csproj" />
   </ItemGroup>

@@ -1,15 +1,14 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.API", "src\BowlingGame.Site.API\BowlingGame.API.csproj", "{E623B866-B1F6-4A90-966B-F0EA8BABE3FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Presentation.API", "src\Presentation\API\BowlingGame.Presentation.API.csproj", "{E623B866-B1F6-4A90-966B-F0EA8BABE3FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{08504631-C59B-4436-8895-D7011486AC2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core", "src\BowlingGame.Core\BowlingGame.Core.csproj", "{F1A873CA-A099-4F4F-895A-7770571B92FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Aplication", "src\Core\Aplication\BowlingGame.Core.Aplication.csproj", "{F1A873CA-A099-4F4F-895A-7770571B92FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Services.Tests", "test\BowlingGame.Core.Services.Tests\BowlingGame.Core.Services.Tests.csproj", "{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA}"
 EndProject
@@ -22,7 +21,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Validators.Tests", "test\BowlingGame.Core.Validators.Tests\BowlingGame.Core.Validators.Tests.csproj", "{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Infraestructure", "src\BowlingGame.Infraestructure\BowlingGame.Infraestructure.csproj", "{69D23586-F6C2-4331-8960-B3C82E9321D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Infrastructure.MSSql", "src\Infrastructure\MSSql\BowlingGame.Infrastructure.MSSql.csproj", "{69D23586-F6C2-4331-8960-B3C82E9321D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Infrastructure.DependencyInjection", "src\Infrastructure\DependencyInjection\BowlingGame.Infrastructure.DependencyInjection.csproj", "{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DBBB83A1-1756-41FF-A350-D2BB1173A7C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D6E92F32-71D0-472C-A969-10A13F5C3F23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{253AD3B3-5B0D-4A78-8E71-A1126639DFFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core.Domain", "src\Core\Domain\BowlingGame.Core.Domain.csproj", "{A08A8A8D-AAD6-4A46-AA1A-C038616485BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Infrastructure.Mongo", "src\Infrastructure\Mongo\BowlingGame.Infrastructure.Mongo.csproj", "{D33D82CC-7824-47F9-88BA-85E857A0635F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,17 +65,35 @@ Global
 		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69D23586-F6C2-4331-8960-B3C82E9321D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A08A8A8D-AAD6-4A46-AA1A-C038616485BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08A8A8D-AAD6-4A46-AA1A-C038616485BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08A8A8D-AAD6-4A46-AA1A-C038616485BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08A8A8D-AAD6-4A46-AA1A-C038616485BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33D82CC-7824-47F9-88BA-85E857A0635F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33D82CC-7824-47F9-88BA-85E857A0635F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33D82CC-7824-47F9-88BA-85E857A0635F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33D82CC-7824-47F9-88BA-85E857A0635F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E623B866-B1F6-4A90-966B-F0EA8BABE3FE} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
-		{F1A873CA-A099-4F4F-895A-7770571B92FD} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
+		{E623B866-B1F6-4A90-966B-F0EA8BABE3FE} = {253AD3B3-5B0D-4A78-8E71-A1126639DFFD}
+		{F1A873CA-A099-4F4F-895A-7770571B92FD} = {DBBB83A1-1756-41FF-A350-D2BB1173A7C0}
 		{155A0DC6-4BD6-49A8-B980-E7AB8B5969EA} = {08504631-C59B-4436-8895-D7011486AC2E}
 		{20123CB5-8C34-4C0B-928A-E8CD260FFF27} = {08504631-C59B-4436-8895-D7011486AC2E}
 		{57B0DCF8-80F9-4C47-9DC9-31ED4D17567E} = {08504631-C59B-4436-8895-D7011486AC2E}
-		{69D23586-F6C2-4331-8960-B3C82E9321D6} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
+		{69D23586-F6C2-4331-8960-B3C82E9321D6} = {D6E92F32-71D0-472C-A969-10A13F5C3F23}
+		{6DB00D1D-81C5-4D78-BADC-9F9CD5BBC3E2} = {D6E92F32-71D0-472C-A969-10A13F5C3F23}
+		{DBBB83A1-1756-41FF-A350-D2BB1173A7C0} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
+		{D6E92F32-71D0-472C-A969-10A13F5C3F23} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
+		{253AD3B3-5B0D-4A78-8E71-A1126639DFFD} = {D07605A7-FC3A-4AD3-A7DD-93CBECE8EBD4}
+		{A08A8A8D-AAD6-4A46-AA1A-C038616485BF} = {DBBB83A1-1756-41FF-A350-D2BB1173A7C0}
+		{D33D82CC-7824-47F9-88BA-85E857A0635F} = {D6E92F32-71D0-472C-A969-10A13F5C3F23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4839F34F-B98A-4A52-8646-1BB52C29D899}

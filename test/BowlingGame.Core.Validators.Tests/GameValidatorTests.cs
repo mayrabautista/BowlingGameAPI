@@ -1,5 +1,5 @@
+using BowlingGame.Core.Aplication.Validators;
 using BowlingGame.Core.Domain.Models;
-using BowlingGame.Core.Services.Validators;
 using FluentValidation.TestHelper;
 
 namespace BowlingGame.Core.Validators.Tests

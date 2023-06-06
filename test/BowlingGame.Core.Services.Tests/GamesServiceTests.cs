@@ -1,10 +1,10 @@
 ﻿
-using BowlingGame.Core.Domain.Definitions;
+using BowlingGame.Core.Aplication.Services;
+using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
-using BowlingGame.Core.Services.Exceptions;
 using FluentValidation;
 using FluentValidation.Results;
-using Moq;
+
 
 namespace BowlingGame.Core.Services.Tests
 {
@@ -50,7 +50,7 @@ namespace BowlingGame.Core.Services.Tests
                 .ReturnsAsync(game);
 
             GamesService service = new(repositoryMock.Object, validatorMock.Object);
-            Assert.ThrowsAsync<ModelValidationException>(async () => await service.CreateAsync(game));
+            Assert.ThrowsAsync<ArgumentException>(async () => await service.CreateAsync(game));
         }
     }
 }

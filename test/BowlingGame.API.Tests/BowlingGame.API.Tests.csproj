@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\BowlingGame.Core\BowlingGame.Core.csproj" />
-    <ProjectReference Include="..\..\src\BowlingGame.Site.API\BowlingGame.API.csproj" />
+    <ProjectReference Include="..\..\src\Presentation\API\BowlingGame.Presentation.API.csproj" />
   </ItemGroup>
 
 </Project>

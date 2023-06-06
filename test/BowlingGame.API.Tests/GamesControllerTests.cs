@@ -1,14 +1,8 @@
-﻿
-using BowlingGame.API.Controllers;
+﻿using BowlingGame.API.Controllers;
 using BowlingGame.API.Models;
-using BowlingGame.Core.Domain.Definitions;
+using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
-using BowlingGame.Core.Services.Exceptions;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Any;
-using Moq;
-using System.Text.RegularExpressions;
 
 namespace BowlingGame.API.Tests
 {
@@ -43,7 +37,7 @@ namespace BowlingGame.API.Tests
                 PlayerName = "Jhon",
             };
 
-            var exception = new ModelValidationException(new List<ValidationFailure>());
+            var exception = new ArgumentException();
             serviceMock
                 .Setup(r => r.CreateAsync(It.IsAny<Game>()))
                 .ThrowsAsync(exception);

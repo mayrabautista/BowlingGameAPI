@@ -24,7 +24,7 @@ namespace BowlingGame.Presentation.RestAPI.Controllers
             {
                 var model = frameDto.ToModel();
                 var frameCreated = await _service.CreateAsync(model);
-                var frameCreatedWithUpdatedScore = await _service.CreateAsync(frameCreated);
+                var frameCreatedWithUpdatedScore = await _service.UpdateScoresFromLastFrame(frameCreated);
                 frameDto.FromModel(frameCreatedWithUpdatedScore);
                 return Created(nameof(CreateAsync), frameDto);
             }

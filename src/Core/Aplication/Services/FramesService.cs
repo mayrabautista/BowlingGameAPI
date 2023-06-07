@@ -15,6 +15,11 @@ namespace BowlingGame.Core.Aplication.Services
             _validator = validator;
         }
 
+        public async Task<IEnumerable<Frame>> GetAsync(FrameFilter filter)
+        {
+            return await _repository.GetAsync(filter);
+        }
+
         public Task<Frame> CreateAsync(Frame frame)
         {
             var validationResult = _validator.Validate(frame);

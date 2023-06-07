@@ -3,8 +3,10 @@ using BowlingGame.Core.Aplication.Validators;
 using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
 using BowlingGame.Infrastructure.Mongo.Repositories;
+using BowlingGame.Infrastructure.MSSql;
 using BowlingGame.Infrastructure.MSSql.Repositories;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -18,7 +20,8 @@ namespace Microsoft.Extensions.DependencyInjection
             if(dbStrategy == "Sql")
             {
                 services.AddBowlingGameSQLRepositories();
-
+                string? dbConection = configuration["ConnectionStrings:Sql"];
+                services.AddDbContext<BowlingGameContext>(options => options.UseSqlServer(dbConection));
             }
             else
             {

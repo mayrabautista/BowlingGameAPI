@@ -9,12 +9,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DependencyInhectionConfiguration
+    public static class DependencyInyectionConfiguration
     {
        public static IServiceCollection AddBowlingGame(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddBowlingGameServices();
-            string dbStrategy = configuration["DatabaseStrategy"];
+            string? dbStrategy = configuration["DatabaseStrategy"];
             if(dbStrategy == "Sql")
             {
                 services.AddBowlingGameSQLRepositories();
@@ -33,12 +33,15 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection  AddBowlingGameServices(this IServiceCollection services)
         {
             services.AddScoped<IGamesService, GamesService>();
+            services.AddScoped<IFramesService, FramesService>();
             return services;
         }
-
+        
         private static IServiceCollection AddBowlingGameSQLRepositories(this IServiceCollection services)
         {
             services.AddScoped<IGamesRepository, GamesMSSqlRepository>();
+            services.AddScoped<IFramesRepository, FramesMSSqlRepository>();
+
             return services;
         }
 
@@ -52,6 +55,7 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddBowlingGameValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<Game>, GameValidator>();
+            services.AddScoped<IValidator<Frame>, FrameValidator>();
             return services;
         }
     }

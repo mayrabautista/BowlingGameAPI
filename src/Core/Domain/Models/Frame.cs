@@ -10,9 +10,9 @@
 
         public int SecondRoll { get; set; }
 
-        public int ThirdRoll { get; set; }
+        public int? ThirdRoll { get; set; }
 
-        public int Position { get; set; }
+        public int Index { get; set; }
 
         public int? TotalScore { get; set; }
 

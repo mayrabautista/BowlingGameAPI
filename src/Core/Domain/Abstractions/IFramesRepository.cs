@@ -6,7 +6,7 @@ namespace BowlingGame.Core.Domain.Abstractions
     {
         Task<Frame> CreateAsync(Frame frame);
 
-        Task<Frame> GetById(Guid id);
+        Task<Frame?> GetById(Guid id);
         
         Task<List<Frame>> GetAsync(FrameFilter? framefilter);
 

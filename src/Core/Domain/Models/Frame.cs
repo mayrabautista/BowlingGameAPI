@@ -16,8 +16,6 @@
 
         public int? TotalScore { get; set; }
 
-        public int CurrentScore { get; set; }
-
         public bool IsStrike { get; set; }
 
         public bool IsSpare { get; set; }

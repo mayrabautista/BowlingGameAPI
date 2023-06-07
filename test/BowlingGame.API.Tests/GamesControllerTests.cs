@@ -1,7 +1,7 @@
-﻿using BowlingGame.API.Controllers;
-using BowlingGame.API.Models;
-using BowlingGame.Core.Domain.Abstractions;
+﻿using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
+using BowlingGame.Presentation.RestAPI.Controllers;
+using BowlingGame.Presentation.RestAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.API.Tests

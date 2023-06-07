@@ -20,24 +20,17 @@ namespace BowlingGame.Presentation.RestAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(GameDto gameDto)
         {
-            try
-            {
-                var model = gameDto.ToModel();
-                var gameCreated = await _service.CreateAsync(model);
-                gameDto.FromModel(gameCreated);
-                return Created(nameof(CreateAsync), gameDto);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var model = gameDto.ToModel();
+            var gameCreated = await _service.CreateAsync(model);
+            gameDto.FromModel(gameCreated);
+            return Created(nameof(CreateAsync), gameDto);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
             var games = await _service.GetAsync();
-            return Ok(games.Select(x=> GameDto.ReturnFromModel(x)));
+            return Ok(games.Select(x => GameDto.ReturnFromModel(x)));
         }
     }
 }

@@ -20,18 +20,11 @@ namespace BowlingGame.Presentation.RestAPI.Controllers
         [HttpPost("games/{Id}/frames")]
         public async Task<IActionResult> CreateAsync(FrameDto frameDto)
         {
-            try
-            {
-                var model = frameDto.ToModel();
-                var frameCreated = await _service.CreateAsync(model);
-                var frameCreatedWithUpdatedScore = await _service.UpdateScoresFromLastFrame(frameCreated);
-                frameDto.FromModel(frameCreatedWithUpdatedScore);
-                return Created(nameof(CreateAsync), frameDto);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var model = frameDto.ToModel();
+            var frameCreated = await _service.CreateAsync(model);
+            var frameCreatedWithUpdatedScore = await _service.UpdateScoresFromLastFrame(frameCreated);
+            frameDto.FromModel(frameCreatedWithUpdatedScore);
+            return Created(nameof(CreateAsync), frameDto);
         }
 
         [HttpGet("games/{id}/frames")]

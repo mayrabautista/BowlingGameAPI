@@ -4,6 +4,7 @@ namespace BowlingGame.Core.Domain.Abstractions
 {
     public interface IFramesService
     {
-        Task<Frame> CalculateFrameScores(Frame frame, List<Frame> frames);
+        Task<Frame> CreateAsync(Frame frame);
+        Task<Frame> UpdateScoresFromLastFrame(Frame frame);
     }
 }

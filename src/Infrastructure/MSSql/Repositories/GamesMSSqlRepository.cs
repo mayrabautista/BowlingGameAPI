@@ -1,10 +1,8 @@
 ﻿using BowlingGame.Core.Domain.Abstractions;
-using BowlingGame.Core.Domain.Enums;
 using BowlingGame.Core.Domain.Models;
 using BowlingGame.Infrastructure.MSSql.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
-using System.Linq;
 
 namespace BowlingGame.Infrastructure.MSSql.Repositories
 {

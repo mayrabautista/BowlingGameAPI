@@ -26,5 +26,10 @@ namespace BowlingGame.Core.Aplication.Services
             var gameCreated = await _repository.CreateAsync(game);
             return gameCreated;
         }
+
+        public async Task<IEnumerable<Game>> GetAsync()
+        {
+            return await _repository.GetAsync();
+        }
     }
 }

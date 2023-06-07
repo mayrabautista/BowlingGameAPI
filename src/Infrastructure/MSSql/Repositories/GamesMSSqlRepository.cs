@@ -2,6 +2,7 @@
 using BowlingGame.Core.Domain.Enums;
 using BowlingGame.Core.Domain.Models;
 using BowlingGame.Infrastructure.MSSql.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;
 
@@ -26,10 +27,10 @@ namespace BowlingGame.Infrastructure.MSSql.Repositories
                 Status = game.Status,
             };
 
-             var result = _context.Games.Add(dbGame);
-             _context.SaveChanges();
+            var result = _context.Games.Add(dbGame);
+            _context.SaveChanges();
 
-            if(result is not null)
+            if (result is not null)
             {
                 return Task.FromResult(new Game
                 {
@@ -40,6 +41,17 @@ namespace BowlingGame.Infrastructure.MSSql.Repositories
                 });
             }
             throw new ArgumentException(nameof(DBGame));
+        }
+
+        public async Task<IEnumerable<Game>> GetAsync()
+        {
+            return await _context.Games.Select(dbGame => new Game
+            {
+                Id = dbGame.Id,
+                TotalScore = dbGame.TotalScore,
+                PlayerName = dbGame.PlayerName,
+                Status = dbGame.Status,
+            }).ToListAsync();
         }
     }
 }

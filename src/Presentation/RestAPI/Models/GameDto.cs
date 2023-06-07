@@ -22,6 +22,19 @@ namespace BowlingGame.Presentation.RestAPI.Models
             Status = model.Status.ToString();
         }
 
+
+        public static GameDto ReturnFromModel(Game model)
+        {
+            return new GameDto
+            {
+                Id = model.Id,
+                TotalScore = model.TotalScore,
+                PlayerName = model.PlayerName,
+                Status = model.Status.ToString(),
+
+            };
+        }
+
         public Game ToModel()
         {
             Game model = new Game

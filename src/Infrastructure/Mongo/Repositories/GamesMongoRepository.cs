@@ -10,5 +10,10 @@ namespace BowlingGame.Infrastructure.Mongo.Repositories
             Console.WriteLine("Hello from mongo repository");
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<Game>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

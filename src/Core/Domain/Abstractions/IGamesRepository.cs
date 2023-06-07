@@ -5,5 +5,6 @@ namespace BowlingGame.Core.Domain.Abstractions
     public interface IGamesRepository
     {
         Task<Game> CreateAsync(Game game);
+        Task<IEnumerable<Game>> GetAsync();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using BowlingGame.Core.Domain.Abstractions;
+using BowlingGame.Core.Domain.Models;
 using BowlingGame.Presentation.RestAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BowlingGame.Presentation.RestAPI.Controllers
 {
@@ -29,6 +31,13 @@ namespace BowlingGame.Presentation.RestAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var games = await _service.GetAsync();
+            return Ok(games.Select(x=> GameDto.ReturnFromModel(x)));
         }
     }
 }

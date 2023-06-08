@@ -13,7 +13,7 @@ namespace BowlingGame.Infrastructure.Mongo.Models
         public string Id { get; set; } = string.Empty;
 
         [BsonElement("gameId")]
-        public Guid GameId { get; set; } = Guid.NewGuid();
+        public string GameId { get; set; } = string.Empty;
 
         [BsonElement("totalScore")]
         public int TotalScore { get; set; }
@@ -24,5 +24,7 @@ namespace BowlingGame.Infrastructure.Mongo.Models
         [BsonElement("status")]
         public GameStatus Status { get; set; }
 
+        [BsonElement("frames")]
+        public List<DBFrame> Frames { get; set; } = new List<DBFrame> { };
     }
 }

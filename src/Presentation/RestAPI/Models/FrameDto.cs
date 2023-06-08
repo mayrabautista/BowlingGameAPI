@@ -9,7 +9,7 @@ namespace BowlingGame.Presentation.RestAPI.Models
 
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public Guid? GameId { get; set; }
+        public Guid GameId { get; set; }
 
         public int FirstRoll { get; set; }
 
@@ -19,7 +19,7 @@ namespace BowlingGame.Presentation.RestAPI.Models
 
         public int Index { get; set; }
 
-        public int? TotalScore { get; set; }
+        public int TotalScore { get; set; }
 
         public bool IsStrike { get; set; }
 

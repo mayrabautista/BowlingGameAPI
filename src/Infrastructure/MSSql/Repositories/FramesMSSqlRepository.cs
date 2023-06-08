@@ -50,7 +50,7 @@ namespace BowlingGame.Infrastructure.MSSql.Repositories
             throw new ArgumentException(nameof(Frame));
         }
 
-        public async Task<List<Frame>> GetAsync(FrameFilter? framefilter)
+        public async Task<IEnumerable<Frame>> GetAsync(FrameFilter? framefilter)
         {
             var query = _context.Frames.AsQueryable();
 

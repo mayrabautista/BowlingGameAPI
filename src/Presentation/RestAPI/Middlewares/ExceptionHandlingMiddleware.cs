@@ -29,6 +29,7 @@ namespace BowlingGame.Presentation.RestAPI.Middlewares
                         Detail = ex.Message,
                     };
                     string json = JsonSerializer.Serialize(details);
+                    context.Response.Headers["Content-Type"] = "application/json";
                     await context.Response.WriteAsync(json);
                 }
                 else
@@ -43,6 +44,7 @@ namespace BowlingGame.Presentation.RestAPI.Middlewares
                         Detail = "An internal server has occurred",
                     };
                     string json = JsonSerializer.Serialize(details);
+                    context.Response.Headers["Content-Type"] = "application/json";
                     await context.Response.WriteAsync(json);
                 }
             }

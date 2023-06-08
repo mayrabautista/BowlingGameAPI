@@ -17,11 +17,6 @@ namespace BowlingGame.Core.Aplication.Validators
                 .WithMessage("A regular frame must add up to 10.");
 
             RuleFor(x => x.IsStrike)
-                .Must((frame, model) => frame.FirstRoll == 10 && frame.SecondRoll == 0)
-                .When(x => x.IsStrike && x.Index < 10)
-                .WithMessage("A strike must get 10 in the first roll and 0 in the second roll.");
-
-            RuleFor(x => x.IsStrike)
                .Must((frame, model) => frame.FirstRoll == 10 && frame.SecondRoll == 0)
                .When(x => x.IsStrike && x.Index < 10)
                .WithMessage("A strike must get 10 in the first roll and 0 in the second roll.");

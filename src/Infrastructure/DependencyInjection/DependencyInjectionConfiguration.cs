@@ -15,7 +15,7 @@ using MongoDB.Driver;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DependencyInyectionConfiguration
+    public static partial class DependencyInjectionConfiguration
     {
        public static IServiceCollection AddBowlingGame(this IServiceCollection services,IConfiguration configuration)
         {
@@ -23,16 +23,11 @@ namespace Microsoft.Extensions.DependencyInjection
             string? dbStrategy = configuration["DatabaseStrategy"];
             if(dbStrategy == "Sql")
             {
-                services.AddBowlingGameSQLRepositories();
-                string? dbConection = configuration["SqlDbSettings:ConnectionString"];
-                services.AddDbContext<BowlingGameContext>(options => options.UseSqlServer(dbConection));
+                services.AddBowlingGameMSSql(configuration);
             }
             else
             {
-                services.AddBowlingGameNoSQLRepositories();
-                services.Configure<MongoDBSettings>(configuration.GetSection(nameof(MongoDBSettings)));
-                services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
-                services.AddSingleton<IMongoClient>(s => new MongoClient(configuration["MongoDBSettings:ConnectionString"]));
+                services.AddBowlingGameMongo(configuration);
             }
 
             services.AddBowlingGameValidators();
@@ -46,22 +41,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IFramesService, FramesService>();
             return services;
         }
-        
-        private static IServiceCollection AddBowlingGameSQLRepositories(this IServiceCollection services)
-        {
-            services.AddScoped<IGamesRepository, GamesMSSqlRepository>();
-            services.AddScoped<IFramesRepository, FramesMSSqlRepository>();
-
-            return services;
-        }
-
-        private static IServiceCollection AddBowlingGameNoSQLRepositories(this IServiceCollection services)
-        {
-            services.AddScoped<IGamesRepository, GamesMongoRepository>();
-            services.AddScoped<IFramesRepository, FramesMongoRepository>();
-            return services;
-        }
-
+    
         private static IServiceCollection AddBowlingGameValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<Game>, GameValidator>();

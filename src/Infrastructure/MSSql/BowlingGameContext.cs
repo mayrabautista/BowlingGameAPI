@@ -8,7 +8,7 @@ namespace BowlingGame.Infrastructure.MSSql
         public BowlingGameContext(DbContextOptions<BowlingGameContext> options)
            : base(options)
         {
-
+            Database.Migrate();
         }
 
         public DbSet<DBFrame> Frames { get; set; }

@@ -37,10 +37,12 @@ namespace BowlingGame.Presentation.RestAPI.Controllers
         public async Task<IActionResult> GetAsync(string id)
         {
             var gameDto = new GameDto();
+            
             if(_memoryCache.TryGetValue($"Game_{id}", out gameDto))
             {
                 return Ok(gameDto);
             }
+            
             var game = await _service.GetAsync(Guid.Parse(id));
             gameDto = GameDto.ReturnFromModel(game);
 

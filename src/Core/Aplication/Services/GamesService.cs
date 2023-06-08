@@ -17,12 +17,7 @@ namespace BowlingGame.Core.Aplication.Services
 
         public async Task<Game> CreateAsync(Game game)
         {
-            var result = await _validator.ValidateAsync(game);
-            if (!result.IsValid)
-            {
-                throw new ArgumentException(nameof(game));
-            }
-
+            await _validator.ValidateAndThrowAsync(game);
             var gameCreated = await _repository.CreateAsync(game);
             return gameCreated;
         }

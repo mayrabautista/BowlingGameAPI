@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -14,20 +15,36 @@ namespace BowlingGame.Presentation.RestAPI.Middlewares
             {
                 await next(context);
             }
-            catch
+            catch (Exception ex)
             {
-                context.Response.StatusCode = 
-                    (int)HttpStatusCode.InternalServerError;
-                ProblemDetails details = new ProblemDetails()
+                if (ex.Source == "FluentValidation")
                 {
-                    Status= (int)HttpStatusCode.InternalServerError,
-                    Type = "Server Error",
-                    Title = "Server Error",
-                    Detail = "An internal server has occurred",
-                };
-                string json = JsonSerializer.Serialize(details);
-                await context.Response.WriteAsync(json);
-                context.Response.ContentType = "application/json";
+                    context.Response.StatusCode =
+                    (int)HttpStatusCode.BadRequest;
+                    ProblemDetails details = new ProblemDetails()
+                    {
+                        Status = (int)HttpStatusCode.BadRequest,
+                        Type = "Validation Error",
+                        Title = "Validation Error",
+                        Detail = ex.Message,
+                    };
+                    string json = JsonSerializer.Serialize(details);
+                    await context.Response.WriteAsync(json);
+                }
+                else
+                {
+                    context.Response.StatusCode =
+                    (int)HttpStatusCode.InternalServerError;
+                    ProblemDetails details = new ProblemDetails()
+                    {
+                        Status = (int)HttpStatusCode.InternalServerError,
+                        Type = "Server Error",
+                        Title = "Server Error",
+                        Detail = "An internal server has occurred",
+                    };
+                    string json = JsonSerializer.Serialize(details);
+                    await context.Response.WriteAsync(json);
+                }
             }
         }
     }

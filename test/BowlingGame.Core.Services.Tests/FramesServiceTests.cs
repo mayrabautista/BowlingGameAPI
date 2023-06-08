@@ -2,7 +2,6 @@
 using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
 using FluentValidation;
-using FluentValidation.Results;
 
 namespace BowlingGame.Core.Services.Tests
 {
@@ -19,9 +18,6 @@ namespace BowlingGame.Core.Services.Tests
 
             Mock<IValidator<Frame>> validatorMock = new Mock<IValidator<Frame>>(MockBehavior.Strict);
 
-            validatorMock
-                .Setup(validator => validator.ValidateAsync(It.IsAny<Frame>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new ValidationResult());
             repositoryMock
                 .Setup(r => r.GetAsync(It.IsAny<FrameFilter>()))
                 .ReturnsAsync(new List<Frame>());

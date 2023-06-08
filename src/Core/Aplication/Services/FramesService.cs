@@ -26,12 +26,7 @@ namespace BowlingGame.Core.Aplication.Services
         public async Task<Frame> CreateAsync(Frame frame)
         {
             frame.Index = await GetFrameIndexAsync(frame.GameId);
-            var validationResult = _validator.Validate(frame);
-            if (!validationResult.IsValid)
-            {
-                throw new ArgumentException(nameof(frame));
-            }
-
+            _validator.ValidateAndThrow(frame);
             var frameCreated = await _repository.CreateAsync(frame);
             return frameCreated;
         }

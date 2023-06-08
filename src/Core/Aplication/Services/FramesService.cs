@@ -1,4 +1,5 @@
 ﻿using BowlingGame.Core.Domain.Abstractions;
+using BowlingGame.Core.Domain.Enums;
 using BowlingGame.Core.Domain.Models;
 using FluentValidation;
 
@@ -7,11 +8,13 @@ namespace BowlingGame.Core.Aplication.Services
     public class FramesService : IFramesService
     {
         private readonly IFramesRepository _repository;
+        private readonly IGamesRepository _gamesRepository;
         private readonly IValidator<Frame> _validator;
 
-        public FramesService(IFramesRepository repository, IValidator<Frame> validator)
+        public FramesService(IFramesRepository repository, IGamesRepository gamesRepository, IValidator<Frame> validator)
         {
             _repository = repository;
+            _gamesRepository = gamesRepository;
             _validator = validator;
         }
 
@@ -24,7 +27,6 @@ namespace BowlingGame.Core.Aplication.Services
         {
             frame.Index = await GetFrameIndexAsync(frame.GameId);
             var validationResult = _validator.Validate(frame);
-
             if (!validationResult.IsValid)
             {
                 throw new ArgumentException(nameof(frame));
@@ -59,7 +61,28 @@ namespace BowlingGame.Core.Aplication.Services
                 await _repository.UpdateAsync(twoFramesAgo);
             }
 
+            await UpdateGameStatus(frame);
+
             return frame;
+        }
+
+        public async Task UpdateGameStatus(Frame frame)
+        {
+            if (frame.Index == 1 || frame.Index == 10)
+            {
+                var game = await _gamesRepository.GetAsync(frame.GameId);
+                if (frame.Index == 1)
+                {
+                    game.Status = GameStatus.Ongoing;
+                }
+                else if (frame.Index == 10)
+                {
+                    game.Status = GameStatus.Finished;
+                    game.TotalScore = frame.TotalScore;
+                }
+
+                await _gamesRepository.UpdateAsync(game);
+            }
         }
 
         public void CalculateScore(

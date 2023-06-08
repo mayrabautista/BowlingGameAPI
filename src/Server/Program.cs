@@ -6,10 +6,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddExceptionHandler(options =>
-{
-    Console.WriteLine("Hello from the exception");
-});
 builder.Services.AddBowlingGame(builder.Configuration);
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();

@@ -1,8 +1,8 @@
 ﻿using BowlingGame.Core.Domain.Abstractions;
 using BowlingGame.Core.Domain.Models;
-using BowlingGame.Infrastructure.MSSql.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using DBGame = BowlingGame.Infrastructure.MSSql.Models.DBGame;
 
 namespace BowlingGame.Infrastructure.MSSql.Repositories
 {
@@ -50,6 +50,29 @@ namespace BowlingGame.Infrastructure.MSSql.Repositories
                 PlayerName = dbGame.PlayerName,
                 Status = dbGame.Status,
             }).ToListAsync();
+        }
+
+        public async Task<Game> GetAsync(Guid id)
+        {
+            var dbGame = await _context.Games.FindAsync(id) ?? throw new ArgumentNullException("Entity not found");
+            return new Game
+            {
+                Id = dbGame.Id,
+                TotalScore = dbGame.TotalScore,
+                PlayerName = dbGame.PlayerName,
+                Status = dbGame.Status,
+            };
+        }
+
+        public async Task<Game> UpdateAsync(Game game)
+        {
+            var dbGame = await _context.Games.FindAsync(game.Id) ?? throw new ArgumentNullException(nameof(game));
+            dbGame.TotalScore = game.TotalScore;
+            dbGame.PlayerName = game.PlayerName;
+            dbGame.Status = game.Status;
+            _context.SaveChanges();
+
+            return game;
         }
     }
 }

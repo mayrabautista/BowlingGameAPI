@@ -35,6 +35,10 @@ namespace BowlingGame.Core.Aplication.Validators
                 .Must(model => model == null)
                 .When(x => x.Index == 10 && x.FirstRoll + x.SecondRoll < 10)
                 .WithMessage("The player does not have an additional roll as it was neither a strike nor a spare.");
+
+            RuleFor(x => x.Index)
+           .Must(index => index <= 10)
+           .WithMessage("A game cannot contain more than 10 frames.");
         }
     }
 }

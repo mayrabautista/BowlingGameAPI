@@ -15,6 +15,8 @@ namespace BowlingGame.Core.Services.Tests
         public void Init()
         {
             Mock<IFramesRepository> repositoryMock = new Mock<IFramesRepository>();
+            Mock<IGamesRepository> gamesRepositoryMock = new Mock<IGamesRepository>();
+
             Mock<IValidator<Frame>> validatorMock = new Mock<IValidator<Frame>>(MockBehavior.Strict);
 
             validatorMock
@@ -24,7 +26,7 @@ namespace BowlingGame.Core.Services.Tests
                 .Setup(r => r.GetAsync(It.IsAny<FrameFilter>()))
                 .ReturnsAsync(new List<Frame>());
 
-            _framesService = new FramesService(repositoryMock.Object, validatorMock.Object);
+            _framesService = new FramesService(repositoryMock.Object, gamesRepositoryMock.Object, validatorMock.Object);
         }
 
         [Test]

@@ -6,8 +6,6 @@ namespace BowlingGame.Core.Domain.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public List<Frame> Frames { get; set; } = new List<Frame>();
-
         public int TotalScore { get; set; }
 
         public string PlayerName { get; set; } = string.Empty;

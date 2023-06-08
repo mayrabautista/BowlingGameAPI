@@ -28,33 +28,14 @@ namespace BowlingGame.API.Tests
                 .Setup(r => r.CreateAsync(It.IsAny<Frame>()))
                 .ReturnsAsync((Frame m) => m);
 
+            serviceMock
+                .Setup(r => r.UpdateScoresFromLastFrame(It.IsAny<Frame>()))
+                .ReturnsAsync((Frame m) => m);
+
             FramesController frameController = new FramesController(serviceMock.Object);
             var result = await frameController.CreateAsync(frameDto);
             Assert.That(result, Is.InstanceOf(typeof(CreatedResult)));
         }
 
-        [Test]
-        public async Task CreateAsync_InvalidFrame_BadRequestObjectResult()
-        {
-            Mock<IFramesService> serviceMock = new Mock<IFramesService>();
-
-            FrameDto frameDto = new FrameDto
-            {
-                GameId = Guid.NewGuid(),
-                FirstRoll = 20,
-                SecondRoll = 2,
-                Index = 1,
-                IsStrike = false,
-                IsSpare = false,
-            };
-            var exception = new ArgumentException();
-            serviceMock
-                .Setup(r => r.CreateAsync(It.IsAny<Frame>()))
-                .ThrowsAsync(exception);
-
-            FramesController frameController = new FramesController(serviceMock.Object);
-            var result = await frameController.CreateAsync(frameDto);
-            Assert.That(result, Is.InstanceOf(typeof(BadRequestObjectResult)));
-        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BowlingGame.Core.Domain.Abstractions;
-using BowlingGame.Core.Domain.Enums;
 using BowlingGame.Core.Domain.Models;
 using BowlingGame.Infrastructure.Mongo.Interfaces;
 using BowlingGame.Infrastructure.Mongo.Models;
@@ -20,7 +19,7 @@ namespace BowlingGame.Infrastructure.Mongo.Repositories
         {
             DBGame dbGame = new DBGame()
             {
-                GameId = game.Id,
+                GameId = game.Id.ToString(),
                 TotalScore = game.TotalScore,
                 PlayerName = game.PlayerName,
                 Status = game.Status,
@@ -36,7 +35,7 @@ namespace BowlingGame.Infrastructure.Mongo.Repositories
 
             return result.Select(dbGame => new Game()
             {
-                Id = dbGame.GameId,
+                Id = Guid.Parse(dbGame.GameId),
                 TotalScore = dbGame.TotalScore,
                 PlayerName = dbGame.PlayerName,
                 Status = dbGame.Status,

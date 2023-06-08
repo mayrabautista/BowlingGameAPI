@@ -249,8 +249,8 @@ namespace BowlingGame.Core.Services.Tests
                 ref previousFrame,
                 ref twoFramesAgo);
 
-            Assert.That(frame.TotalScore, Is.EqualTo(50));
-            Assert.That(previousFrame?.TotalScore, Is.EqualTo(40));
+            Assert.That(frame.TotalScore, Is.EqualTo(60));
+            Assert.That(previousFrame?.TotalScore, Is.EqualTo(50));
             Assert.That(twoFramesAgo?.TotalScore, Is.EqualTo(30));
         }
 
@@ -273,7 +273,7 @@ namespace BowlingGame.Core.Services.Tests
                 FirstRoll = 10,
                 SecondRoll = 0,
                 Index = 9,
-                TotalScore = 250,
+                TotalScore = 240,
                 IsStrike = true,
             };
 

@@ -20,15 +20,17 @@ namespace BowlingGame.Core.Aplication.Services
             return await _repository.GetAsync(filter);
         }
 
-        public Task<Frame> CreateAsync(Frame frame)
+        public async Task<Frame> CreateAsync(Frame frame)
         {
+            frame.Index = await GetFrameIndexAsync(frame.GameId);
             var validationResult = _validator.Validate(frame);
+
             if (!validationResult.IsValid)
             {
                 throw new ArgumentException(nameof(frame));
             }
 
-            var frameCreated = _repository.CreateAsync(frame);
+            var frameCreated = await _repository.CreateAsync(frame);
             return frameCreated;
         }
 
@@ -41,7 +43,7 @@ namespace BowlingGame.Core.Aplication.Services
                 IndexTo = frame.Index,
             };
 
-            List<Frame> previousFrames = await _repository.GetAsync(filter);
+            IEnumerable<Frame> previousFrames = await _repository.GetAsync(filter);
             Frame? previousFrame = previousFrames.FirstOrDefault(x => x.Index == frame.Index - 1);
             Frame? twoFramesAgo = previousFrames.FirstOrDefault(x => x.Index == frame.Index - 2);
             CalculateScore(ref frame, ref previousFrame, ref twoFramesAgo);
@@ -82,6 +84,7 @@ namespace BowlingGame.Core.Aplication.Services
                         if (twoFramesAgo.IsStrike)
                         {
                             twoFramesAgo.TotalScore += frame.FirstRoll;
+                            previousFrame.TotalScore += frame.FirstRoll;
                         }
                     }
                 }
@@ -94,16 +97,24 @@ namespace BowlingGame.Core.Aplication.Services
                         if (twoFramesAgo.IsStrike)
                         {
                             twoFramesAgo.TotalScore += frame.FirstRoll;
+                            previousFrame.TotalScore += frame.FirstRoll;
                         }
                     }
                 }
 
                 frame.TotalScore = frame.FirstRoll + frame.SecondRoll + previousFrame.TotalScore;
-                if (frame.Index == 10 && frame.IsStrike)
+                if (frame.Index == 10 && (frame.IsStrike || frame.IsSpare))
                 {
-                    frame.TotalScore += frame.ThirdRoll;
+                    frame.TotalScore += frame.ThirdRoll ?? 0;
                 }
             }
+        }
+
+        private async Task<int> GetFrameIndexAsync(Guid gameId)
+        {
+            var frameFilter = new FrameFilter() { GameId = gameId };
+            var framesByGame = await _repository.GetAsync(frameFilter);
+            return framesByGame.Count() + 1;
         }
     }
 }

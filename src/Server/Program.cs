@@ -7,7 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddBowlingGame(builder.Configuration);
-
+builder.Services.AddMemoryCache();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 var app = builder.Build();
@@ -19,11 +19,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+app.UseHttpsRedirection();
+app.UseAuthorization();
 app.MapControllers();
-
 app.Run();

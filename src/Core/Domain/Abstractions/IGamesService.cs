@@ -6,5 +6,6 @@ namespace BowlingGame.Core.Domain.Abstractions
     {
         Task<Game> CreateAsync(Game game);
         Task<IEnumerable<Game>> GetAsync();
+        Task<Game> GetAsync(Guid id);
     }
 }

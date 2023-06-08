@@ -31,5 +31,10 @@ namespace BowlingGame.Core.Aplication.Services
         {
             return await _repository.GetAsync();
         }
+
+        public async Task<Game> GetAsync(Guid id)
+        {
+            return await _repository.GetAsync(id);
+        }
     }
 }
